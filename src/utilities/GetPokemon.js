@@ -1,10 +1,18 @@
-const pokemonCount = 75;
+const pokemonCount = 5;
 
 const getPokemonCount = async () => {
 	const pokemonData = [];
 	for (let i = 1; i <= pokemonCount; i++) {
-		const pokemon = await catchPokemon(i);
-		pokemonData.push(pokemon);
+		const data = await catchPokemon(i);
+		const image = await catchPokemonImage(i);
+		console.log(image);
+		pokemonData.push({
+			id: data.id,
+			name: data.name,
+			types: data.types,
+			mainType: getMainType(data.types),
+			image: URL.createObjectURL(image)
+		})
 	}
 	return pokemonData;
 };
@@ -14,18 +22,26 @@ const catchPokemon = async id => {
 		const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
 		const res = await fetch(url);
 		const pokemonData = await res.json();
-		return ({
-			id: pokemonData.id,
-			name: pokemonData.name,
-			types: pokemonData.types,
-			mainType: getMainType(pokemonData.types)
-		});
+		return pokemonData;
 	} 
 
 	catch(e) {
 		return 'error';
 	}
 };
+
+const catchPokemonImage = async id => {
+	try {
+		const url = `https://pokeres.bastionbot.org/images/pokemon/${id}.png`
+		const res = await fetch(url);
+		const pokemonData = await res.blob();
+		return pokemonData;
+	}
+
+	catch(e) {
+		return 'error';
+	}
+}
 
 const getMainType = (types) => {
     const typeArray = ['fire', 'grass', 'electric', 'water', 'ground', 'rock', 'fairy', 'poison', 'bug', 'dragon', 'psychic', 'flying', 'fighting', 'normal'];

@@ -21,7 +21,7 @@ export const Card = props => {
 						<div className="wave wave-three" style={{backgroundColor: waveColour}}></div>
 						<div className="image_container">
 							<img
-							src={`https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png`} 
+							src={pokemon.image} 
 							alt={`Image of ${pokemon.name}`}
 						/>
 						</div>
