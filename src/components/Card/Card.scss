@@ -1,6 +1,6 @@
 .pokemonCard {
 	background: #FFF;
-	width: 70%;
+	width: 80%;
 	margin: 0 auto 20px auto;
 	border-radius: 4px;
 	box-shadow:
@@ -68,6 +68,13 @@
 		img {
 			width: 100%;
 		}
+	}
+}
+
+.pokemonCard_info { 
+	h2 {
+		text-align: center;
+		text-transform: uppercase;
 	}
 }
 

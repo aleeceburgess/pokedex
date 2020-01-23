@@ -26,9 +26,11 @@ export const Card = props => {
 						/>
 						</div>
 					</div>
-					<h2>{pokemon.name}</h2>
-					<p>{pokemon.id}</p>
-					<p>{pokemon.mainType}</p>
+					<div className="pokemonCard_info">
+						<h2>{pokemon.name}</h2>
+						<p>{pokemon.id}</p>
+						<p>{pokemon.mainType}</p>
+					</div>
 				</div>
 			</Col>
       	);
