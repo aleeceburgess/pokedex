@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+
+import Loader from '../Loader/Loader';
 import CardContainer from '../Card/CardContainer';
 
 import Pokemon from '../../utilities/GetPokemon'
@@ -23,7 +25,7 @@ class App extends React.Component {
 
   render = () => {
     if (!this.state.pokemonList) {
-      return <p>Loading</p>;
+      return <Loader />
     }
     return (
       <Container>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Card } from "./Card";
 
-class SisterCitiesContainer extends React.Component {
+class CardContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -52,4 +52,4 @@ class SisterCitiesContainer extends React.Component {
   };
 }
 
-export default SisterCitiesContainer;
+export default CardContainer;
