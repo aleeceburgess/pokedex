@@ -25,7 +25,11 @@ class App extends React.Component {
 
   render = () => {
     if (!this.state.pokemonList) {
-      return <Loader />
+      return (
+        <Container>
+          <Loader />
+        </Container>
+      )
     }
     return (
       <Container>

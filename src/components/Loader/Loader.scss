@@ -1,12 +1,19 @@
 .pokeball_container {
-  height: 100vh;
+  margin-top: 5%;
+}
+
+.loading-text {
+  width: 100%;
+  font-weight: 600;
+  font-size: 2em;
+  text-align: center;
 }
 
 .pokeball {
-    position: relative;
     width: 250px;
     height: 250px;
-    background: #fff;
+    position: relative;
+    background: white;
     border: 15px solid #000;
     border-radius: 50%;
     overflow: hidden;
