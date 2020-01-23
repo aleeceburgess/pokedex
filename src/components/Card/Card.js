@@ -7,8 +7,14 @@ export const Card = props => {
 	return props.pokemonList.map((pokemon, i) => {
 		const waveColour = props.getWaveColour(pokemon.mainType);
 		return (
-			<Col xs="12" sm="6" lg="4" key={pokemon.id}>
-				<div className="pokemonCard">
+			<Col xs="12" sm="6" lg="4" 
+				key={pokemon.id}
+			>
+				<div 
+					className={`pokemonCard ${props.activeCard == pokemon.id ? 'active' : '' }`}
+					data-id={pokemon.id}
+					onClick={props.handleCardClick.bind(this)}
+				>
 					<div className="pokemonCard_header">
 						<div className="wave" style={{backgroundColor: waveColour}}></div>
 						<div className="wave wave-two" style={{backgroundColor: waveColour}}></div>

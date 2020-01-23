@@ -4,10 +4,31 @@
 	margin: 0 auto 20px auto;
 	border-radius: 4px;
 	box-shadow:
-	  0 0.3px 3.6px rgba(0, 0, 0, 0.023),
-	  0 0.9px 10px rgba(0, 0, 0, 0.031),
-	  0 2.2px 24.1px rgba(0, 0, 0, 0.036),
-	  0 8px 80px rgba(0, 0, 0, 0.07);
+		0 0.3px 3.6px rgba(0, 0, 0, 0.023),
+		0 0.9px 10px rgba(0, 0, 0, 0.031),
+		0 2.2px 24.1px rgba(0, 0, 0, 0.036),
+		0 8px 80px rgba(0, 0, 0, 0.07);
+
+	&.active {
+		box-shadow:
+			0 0.3px 2.7px rgba(0, 0, 0, 0.071),
+			0 0.9px 6.9px rgba(0, 0, 0, 0.102),
+			0 1.9px 14.2px rgba(0, 0, 0, 0.128),
+			0 4.2px 29.2px rgba(0, 0, 0, 0.159),
+			0 8px 80px rgba(0, 0, 0, 0.23);
+		
+		.wave {
+			animation: drift 3000ms infinite linear;
+		}
+
+		.wave-two {
+			animation: drift 7000ms infinite linear;
+		}
+
+		.wave-three {
+			animation: drift 5000ms infinite linear;
+		}
+	}	
 }
 
 .pokemonCard_header {
@@ -34,18 +55,6 @@
 		&-three {
 			opacity: .4;
 		}
-	}
-
-	&.active .wave {
-		animation: drift 3000ms infinite linear;
-	}
-
-	&.active .wave-two {
-		animation: drift 7000ms infinite linear;
-	}
-
-	&.active .wave-three {
-		animation: drift 5000ms infinite linear;
 	}
 
 	.image_container {

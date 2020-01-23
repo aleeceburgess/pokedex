@@ -2,16 +2,12 @@ import React from "react";
 import { Card } from "./Card";
 
 class SisterCitiesContainer extends React.Component {
-
-  componentDidMount = () => {
-    this.capitaliseName(this.props.pokemonList);
-  };
-
-  capitaliseName = (pokemonList) => {
-    pokemonList.map(pokemon => {
-      // console.log(pokemon.name);
-    })
-  };  
+  constructor(props) {
+    super(props);
+    this.state = {
+      activePokemon: null
+    };
+  }
 
   getWaveColour = (mainType) => {
     const typeAndColour = {
@@ -37,12 +33,20 @@ class SisterCitiesContainer extends React.Component {
     return colour;
   }
 
+  handleCardClick = (e) => {
+    this.setState({
+      activePokemon: e.currentTarget.dataset.id
+    });
+  }
+
 
   render = () => {
     return (
         <Card
           pokemonList={this.props.pokemonList}
           getWaveColour={this.getWaveColour}
+          handleCardClick={this.handleCardClick}
+          activeCard={this.state.activePokemon}
         />
     );
   };
