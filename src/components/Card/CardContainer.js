@@ -12,7 +12,7 @@ class CardContainer extends React.Component {
   getWaveColour = (mainType) => {
     const typeAndColour = {
       fire: '#F47942',
-      grass: '#42f45d',
+      grass: '#76f589',
       electric: '#eef442',
       water: '#42b9f4',
       ground: '#ad622b',
@@ -23,7 +23,7 @@ class CardContainer extends React.Component {
       dragon: '#e8d590',
       psychic: '#c3a1ed',
       flying: '#edd5a1',
-      fighting: '#d4cab6',
+     	fighting: '#d4cab6',
       normal: '#a8a8a8'
     };
     
@@ -34,9 +34,16 @@ class CardContainer extends React.Component {
   }
 
   handleCardClick = (e) => {
-    this.setState({
-      activePokemon: e.currentTarget.dataset.id
-    });
+  	if(e.currentTarget.dataset.id === this.state.activePokemon) {
+  		this.setState({
+	      activePokemon: null
+	    });
+  	} else {
+  		this.setState({
+	      activePokemon: e.currentTarget.dataset.id
+	    });
+  	}
+    
   }
 
 

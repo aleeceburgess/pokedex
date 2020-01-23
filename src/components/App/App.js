@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 import Loader from '../Loader/Loader';
 import CardContainer from '../Card/CardContainer';
@@ -34,7 +35,9 @@ class App extends React.Component {
     return (
       <Container>
         <Row>
-          <h1>Pokédex</h1>
+          <Col>
+            <h1 className="col-12 pokedex-heading">Pokédex</h1>
+          </Col>
         </Row>
         <Row>
           <CardContainer pokemonList={this.state.pokemonList} />

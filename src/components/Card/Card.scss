@@ -18,16 +18,18 @@
 			0 8px 80px rgba(0, 0, 0, 0.23);
 		
 		.wave {
-			animation: drift 3000ms infinite linear;
+			animation: drift-1 3000ms infinite linear;
 		}
 
 		.wave-two {
-			animation: drift 7000ms infinite linear;
+			animation: drift-2 7000ms infinite linear;
 		}
 
 		.wave-three {
-			animation: drift 5000ms infinite linear;
+			animation: drift-3 5000ms infinite linear;
 		}
+
+
 	}	
 }
 
@@ -49,11 +51,13 @@
 		opacity: .6;
 
 		&-two {
-			opacity: .1;
+			opacity: .5;
+			transform: rotate(200deg);
 		}
 
 		&-three {
 			opacity: .4;
+			transform: rotate(150deg);
 		}
 	}
 
@@ -63,6 +67,7 @@
 		padding: 10px;
 		margin-top: 15px;
 		width: 120px;
+		height: 120px;
 		z-index: 10;
 
 		img {
@@ -78,7 +83,14 @@
 	}
 }
 
-@keyframes drift {
-  from { transform: rotate(0deg); }
-  from { transform: rotate(360deg); }
+
+@mixin drift-mixin($name, $startPoint) {
+  @keyframes #{$name} {
+    0% {transform: rotate($startPoint); }
+    100% {transform: rotate($startPoint + 360deg);}
+  }
 }
+
+@include drift-mixin(drift-1, 0deg);
+@include drift-mixin(drift-2, 200deg);
+@include drift-mixin(drift-3, 150deg);

@@ -1,11 +1,10 @@
-const pokemonCount = 5;
+const pokemonCount = 25;
 
 const getPokemonCount = async () => {
 	const pokemonData = [];
 	for (let i = 1; i <= pokemonCount; i++) {
 		const data = await catchPokemon(i);
 		const image = await catchPokemonImage(i);
-		console.log(image);
 		pokemonData.push({
 			id: data.id,
 			name: data.name,
