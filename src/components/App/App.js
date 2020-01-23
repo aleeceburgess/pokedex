@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Card from '../Card/Card';
+import CardContainer from '../Card/CardContainer';
 
 import Pokemon from '../../utilities/GetPokemon'
 
@@ -23,7 +23,7 @@ class App extends React.Component {
 
   render = () => {
     if (!this.state.pokemonList) {
-      return null;
+      return <p>Loading</p>;
     }
     return (
       <Container>
@@ -31,7 +31,7 @@ class App extends React.Component {
           <h1>Pokédex</h1>
         </Row>
         <Row>
-          <Card pokemonList={this.state.pokemonList} />
+          <CardContainer pokemonList={this.state.pokemonList} />
         </Row>
       </Container>
     );

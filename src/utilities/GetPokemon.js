@@ -1,4 +1,4 @@
-const pokemonCount = 10;
+const pokemonCount = 75;
 
 const getPokemonCount = async () => {
 	const pokemonData = [];
@@ -16,7 +16,9 @@ const catchPokemon = async id => {
 		const pokemonData = await res.json();
 		return ({
 			id: pokemonData.id,
-			name: pokemonData.name
+			name: pokemonData.name,
+			types: pokemonData.types,
+			mainType: getMainType(pokemonData.types)
 		});
 	} 
 
@@ -24,6 +26,14 @@ const catchPokemon = async id => {
 		return 'error';
 	}
 };
+
+const getMainType = (types) => {
+    const typeArray = ['fire', 'grass', 'electric', 'water', 'ground', 'rock', 'fairy', 'poison', 'bug', 'dragon', 'psychic', 'flying', 'fighting', 'normal'];
+
+    const pokemonTypeArray = types.map(type => type.type.name);
+    const type = typeArray.find(type => pokemonTypeArray.indexOf(type) > -1);
+    return type;
+  };
 
 
 export default getPokemonCount;
