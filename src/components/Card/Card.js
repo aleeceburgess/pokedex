@@ -1,11 +1,13 @@
 import React from 'react';
+import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Waves from '../Waves/Waves';
 import '../Card/Card.scss';
 
 export const Card = props => {
 
 	return props.pokemonList.map((pokemon, i) => {
-		const waveColour = props.getWaveColour(pokemon.mainType);
+		//const waveColour = props.getWaveColour(pokemon.mainType);
 		return (
 			<Col xs="12" sm="6" lg="4" 
 				key={pokemon.id}
@@ -16,9 +18,7 @@ export const Card = props => {
 					onClick={props.handleCardClick.bind(this)}
 				>
 					<div className="pokemonCard_header">
-						<div className="wave" style={{backgroundColor: waveColour}}></div>
-						<div className="wave wave-two" style={{backgroundColor: waveColour}}></div>
-						<div className="wave wave-three" style={{backgroundColor: waveColour}}></div>
+						<Waves waveColour={props.getWaveColour(pokemon.mainType)} />
 						<div className="image_container">
 							<img
 							src={pokemon.image} 

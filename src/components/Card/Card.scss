@@ -16,19 +16,6 @@
 			0 1.9px 14.2px rgba(0, 0, 0, 0.128),
 			0 4.2px 29.2px rgba(0, 0, 0, 0.159),
 			0 8px 80px rgba(0, 0, 0, 0.23);
-		
-		.wave {
-			animation: drift-1 3000ms infinite linear;
-		}
-
-		.wave-two {
-			animation: drift-2 7000ms infinite linear;
-		}
-
-		.wave-three {
-			animation: drift-3 5000ms infinite linear;
-		}
-
 
 	}	
 }
@@ -40,34 +27,10 @@
 	position: relative;
 	overflow: hidden;
 
-	.wave {
-		position: absolute;
-		width: 250px;
-		height: 250px;
-		top: -140%;
-		left: -17%;
-		transform-origin: 50% 48%;
-		border-radius: 43%;
-		opacity: .6;
-
-		&-two {
-			opacity: .5;
-			transform: rotate(200deg);
-		}
-
-		&-three {
-			opacity: .4;
-			transform: rotate(150deg);
-		}
-	}
-
 	.image_container {
-		background: rgba(255,255,255,0.3);
-		border-radius: 50%;
-		padding: 10px;
-		margin-top: 15px;
-		width: 120px;
-		height: 120px;
+		margin: 15px 0;
+		width: 100px;
+		height: 100px;
 		z-index: 10;
 
 		img {
@@ -84,13 +47,4 @@
 }
 
 
-@mixin drift-mixin($name, $startPoint) {
-  @keyframes #{$name} {
-    0% {transform: rotate($startPoint); }
-    100% {transform: rotate($startPoint + 360deg);}
-  }
-}
 
-@include drift-mixin(drift-1, 0deg);
-@include drift-mixin(drift-2, 200deg);
-@include drift-mixin(drift-3, 150deg);

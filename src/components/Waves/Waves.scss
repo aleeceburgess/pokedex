@@ -1,0 +1,45 @@
+.pokemonCard.active {
+	.wave {
+		animation: wavey-1 3000ms infinite linear;
+	}
+
+	.wave-two {
+		animation: wavey-2 7000ms infinite linear;
+	}
+
+	.wave-three {
+		animation: wavey-3 5000ms infinite linear;
+	}
+}
+
+.wave {
+	position: absolute;
+	width: 250px;
+	height: 250px;
+	top: -140%;
+	left: -17%;
+	transform-origin: 50% 48%;
+	border-radius: 43%;
+	opacity: .6;
+
+	&-two {
+		opacity: .5;
+		transform: rotate(200deg);
+	}
+
+	&-three {
+		opacity: .4;
+		transform: rotate(150deg);
+	}
+}
+
+@mixin wavey-mixin($name, $startPoint) {
+  @keyframes #{$name} {
+    0% {transform: rotate($startPoint); }
+    100% {transform: rotate($startPoint + 360deg);}
+  }
+}
+
+@include wavey-mixin(wavey-1, 0deg);
+@include wavey-mixin(wavey-2, 200deg);
+@include wavey-mixin(wavey-3, 150deg);
