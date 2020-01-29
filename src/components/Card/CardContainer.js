@@ -3,12 +3,6 @@ import { Card } from "./Card";
 
 
 class CardContainer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activePokemon: null
-    };
-  }
 
   getDetailColour = (mainType) => {
     const typeAndColour = {
@@ -34,17 +28,8 @@ class CardContainer extends React.Component {
     return colour;
   }
 
-  handleCardClick = (e) => {
-  	if(e.currentTarget.dataset.id === this.state.activePokemon) {
-  		this.setState({
-	      activePokemon: null
-	    });
-  	} else {
-  		this.setState({
-	      activePokemon: e.currentTarget.dataset.id
-	    });
-  	}
-    
+  handleClick = (e) => {
+  	this.props.handleCardClick(e);
   }
 
   // returns single or multuple spans containing the types for pokemon
@@ -71,8 +56,8 @@ class CardContainer extends React.Component {
         <Card
           pokemonList={this.props.pokemonList}
           getDetailColour={this.getDetailColour}
-          handleCardClick={this.handleCardClick}
-          activeCard={this.state.activePokemon}
+          handleClick={this.handleClick}
+          activeCard={this.props.activePokemon}
           renderTypeList={this.renderTypeList}
         />
     );

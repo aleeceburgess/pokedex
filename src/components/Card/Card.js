@@ -15,11 +15,12 @@ export const Card = props => {
 		return (
 			<Col xs="12" sm="6" lg="4" 
 				key={pokemon.id}
+				style={{order: i}}
 			>
 				<div 
 					className={`pokemonCard ${props.activeCard == pokemon.id ? 'active' : '' }`}
 					data-id={pokemon.id}
-					onClick={props.handleCardClick.bind(this)}
+					onClick={props.handleClick.bind(this)}
 				>
 					<div className="pokemonCard_header">
 						<Waves detailColour={detailColour} />

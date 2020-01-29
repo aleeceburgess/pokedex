@@ -14,8 +14,8 @@
 
 .wave {
 	position: absolute;
-	width: 250px;
-	height: 250px;
+	width: 300px;
+	height: 280px;
 	top: -140%;
 	left: -17%;
 	transform-origin: 50% 48%;
@@ -30,6 +30,13 @@
 	&-three {
 		opacity: .4;
 		transform: rotate(150deg);
+	}
+}
+
+@media (min-width: 576px) {
+	.wave { 
+		width: 250px;
+		height: 250px;
 	}
 }
 

@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col';
 
 import Loader from '../Loader/Loader';
 import CardContainer from '../Card/CardContainer';
+import PokemonInfoContainer from '../PokemonInfo/PokemonInfoContainer';
 
 import Pokemon from '../../utilities/GetPokemon'
 
@@ -14,7 +15,8 @@ class App extends React.Component {
    super(props);
 
    this.state = {
-      pokemonList: null
+      pokemonList: null,
+      activePokemon: null
    }
 }
 
@@ -22,6 +24,18 @@ class App extends React.Component {
     this.setState({
       pokemonList: await Pokemon()
     })
+  }
+
+  handleCardClick = (e) => {
+    if(e.currentTarget.dataset.id === this.state.activePokemon) {
+      this.setState({
+        activePokemon: null
+      });
+    } else {
+      this.setState({
+        activePokemon: e.currentTarget.dataset.id
+      });
+    }
   }
 
   render = () => {
@@ -39,8 +53,18 @@ class App extends React.Component {
             <h1 className="col-12 pokedex-heading">Pokédex</h1>
           </Col>
         </Row>
-        <Row>
-          <CardContainer pokemonList={this.state.pokemonList} />
+        <Row
+          className="cardGrid"
+        >
+          <CardContainer 
+            pokemonList={this.state.pokemonList} 
+            activePokemon={this.state.activePokemon}
+            handleCardClick={this.handleCardClick}
+          />
+          <PokemonInfoContainer 
+            pokemonList={this.state.pokemonList} 
+            activePokemon={this.state.activePokemon}
+          />
         </Row>
       </Container>
     );
