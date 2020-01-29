@@ -1,6 +1,7 @@
 import React from "react";
 import { Card } from "./Card";
 
+
 class CardContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -9,7 +10,7 @@ class CardContainer extends React.Component {
     };
   }
 
-  getWaveColour = (mainType) => {
+  getDetailColour = (mainType) => {
     const typeAndColour = {
       fire: '#F47942',
       grass: '#76f589',
@@ -46,14 +47,33 @@ class CardContainer extends React.Component {
     
   }
 
+  // returns single or multuple spans containing the types for pokemon
+  renderTypeList = (types, detailColour) => {
+      const rgbaColour = this.hex2rgba(detailColour, 0.6);
+      return types.map((type, i) => {
+          return (
+              <span 
+                  key={i}
+                  style={{backgroundColor: rgbaColour}}
+              >{type.type.name}</span>
+          )
+      });
+  }
+
+  hex2rgba = (hex, alpha = 1) => {
+    const [r, g, b] = hex.match(/\w\w/g).map(x => parseInt(x, 16));
+    return `rgba(${r},${g},${b},${alpha})`;
+  };
+
 
   render = () => {
     return (
         <Card
           pokemonList={this.props.pokemonList}
-          getWaveColour={this.getWaveColour}
+          getDetailColour={this.getDetailColour}
           handleCardClick={this.handleCardClick}
           activeCard={this.state.activePokemon}
+          renderTypeList={this.renderTypeList}
         />
     );
   };

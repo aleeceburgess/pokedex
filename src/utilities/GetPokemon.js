@@ -1,4 +1,4 @@
-const pokemonCount = 25;
+const pokemonCount = 125;
 
 const getPokemonCount = async () => {
 	const pokemonData = [];

@@ -3,12 +3,11 @@ import '../Waves/Waves.scss';
 
 export const Waves = props => {
 	
-	const waveColour = props.waveColour;
 	return (
 		<div>
-			<div className="wave" style={{backgroundColor: waveColour}}></div>
-			<div className="wave wave-two" style={{backgroundColor: waveColour}}></div>
-			<div className="wave wave-three" style={{backgroundColor: waveColour}}></div>
+			<div className="wave" style={{backgroundColor: props.detailColour}}></div>
+			<div className="wave wave-two" style={{backgroundColor: props.detailColour}}></div>
+			<div className="wave wave-three" style={{backgroundColor: props.detailColour}}></div>
 		</div>			
   	);
 }
