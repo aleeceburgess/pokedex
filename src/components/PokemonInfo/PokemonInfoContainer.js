@@ -2,10 +2,10 @@ import React from "react";
 import { PokemonInfo } from "./PokemonInfo";
 
 
-class PokemonInfoContainer extends React.Component {
+const PokemonInfoContainer = (props) => {
 
-  getPosition = () => {
-    if(this.props.activePokemon !== null) {
+  const getPosition = () => {
+    if(props.activePokemon !== null) {
       const grid = document.querySelector(".cardGrid");
       const cards = Array.from(grid.children);
 
@@ -15,7 +15,7 @@ class PokemonInfoContainer extends React.Component {
       const gridWidth = grid.clientWidth - (parseFloat(gridStyle.paddingLeft) + parseFloat(gridStyle.paddingRight));
       const numPerRow = Math.floor(gridWidth / cardWidth);
       
-      const cardsPosInCardsArr = this.props.activePokemon - 1;
+      const cardsPosInCardsArr = props.activePokemon - 1;
       const rowPosition = cardsPosInCardsArr % numPerRow;
       const extraInfoPos = numPerRow + (cardsPosInCardsArr - rowPosition) - 1;
       // const referenceNode = extraInfoPos < cards.length ? cards[extraInfoPos] : cards[cards.length - 1];
@@ -25,17 +25,19 @@ class PokemonInfoContainer extends React.Component {
     }
   }
 
+  
+  if(props.activePokemon == null){
+    return null;
+  }
 
-  render = () => {
-    const activeNumber = this.props.activePokemon !== null ? this.props.activePokemon - 1 : '0';
-    return (
-        <PokemonInfo
-          pokemonInfo={this.props.pokemonList[activeNumber]}
-          activePokemon={this.props.activePokemon}
-          position={this.getPosition()}
-        />
-    );
-  };
+  const activeNumber = props.activePokemon - 1;
+  return (
+    <PokemonInfo
+      pokemonInfo={props.pokemonList[activeNumber]}
+      position={getPosition()}
+    />
+  );
+
 }
 
 export default PokemonInfoContainer;

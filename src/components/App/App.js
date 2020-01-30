@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -10,65 +10,56 @@ import PokemonInfoContainer from '../PokemonInfo/PokemonInfoContainer';
 
 import Pokemon from '../../utilities/GetPokemon'
 
-class App extends React.Component {
-  constructor(props){
-   super(props);
+const App = () => {
 
-   this.state = {
-      pokemonList: null,
-      activePokemon: null
-   }
-}
+  const [pokemonList, setPokeonList] = useState(null);
+  const [activePokemon, setActivePokemon] = useState(null);
 
-  componentDidMount = async () => {
-    this.setState({
-      pokemonList: await Pokemon()
-    })
-  }
+  useEffect(() => {
+    async function loadPokemon() {
+      setPokeonList(await Pokemon());
+    }
+    loadPokemon();
+  }, []);
 
-  handleCardClick = (e) => {
-    if(e.currentTarget.dataset.id === this.state.activePokemon) {
-      this.setState({
-        activePokemon: null
-      });
+  const handleCardClick = (e) => {
+    if(e.currentTarget.dataset.id === activePokemon) {
+      setActivePokemon(null);
     } else {
-      this.setState({
-        activePokemon: e.currentTarget.dataset.id
-      });
+      setActivePokemon(e.currentTarget.dataset.id);
     }
   }
 
-  render = () => {
-    if (!this.state.pokemonList) {
-      return (
-        <Container>
-          <Loader />
-        </Container>
-      )
-    }
+  if (!pokemonList) {
     return (
       <Container>
-        <Row>
-          <Col>
-            <h1 className="col-12 pokedex-heading">Pokédex</h1>
-          </Col>
-        </Row>
-        <Row
-          className="cardGrid"
-        >
-          <CardContainer 
-            pokemonList={this.state.pokemonList} 
-            activePokemon={this.state.activePokemon}
-            handleCardClick={this.handleCardClick}
-          />
-          <PokemonInfoContainer 
-            pokemonList={this.state.pokemonList} 
-            activePokemon={this.state.activePokemon}
-          />
-        </Row>
+        <Loader />
       </Container>
-    );
+    )
   }
+
+  return (
+    <Container>
+      <Row>
+        <Col>
+          <h1 className="col-12 pokedex-heading">Pokédex</h1>
+        </Col>
+      </Row>
+      <Row
+        className="cardGrid"
+      >
+        <CardContainer 
+          pokemonList={pokemonList} 
+          activePokemon={activePokemon}
+          handleCardClick={handleCardClick}
+        />
+        <PokemonInfoContainer 
+          pokemonList={pokemonList} 
+          activePokemon={activePokemon}
+        />
+      </Row>
+    </Container>
+  );
 }
 
 export default App;

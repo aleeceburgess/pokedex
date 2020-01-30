@@ -2,9 +2,9 @@ import React from "react";
 import { Card } from "./Card";
 
 
-class CardContainer extends React.Component {
+const CardContainer = props => {
 
-  getDetailColour = (mainType) => {
+  const getDetailColour = (mainType) => {
     const typeAndColour = {
       fire: '#F47942',
       grass: '#76f589',
@@ -28,13 +28,13 @@ class CardContainer extends React.Component {
     return colour;
   }
 
-  handleClick = (e) => {
-  	this.props.handleCardClick(e);
+  const handleClick = (e) => {
+  	props.handleCardClick(e);
   }
 
   // returns single or multuple spans containing the types for pokemon
-  renderTypeList = (types, detailColour) => {
-      const rgbaColour = this.hex2rgba(detailColour, 0.6);
+  const renderTypeList = (types, detailColour) => {
+      const rgbaColour = hex2rgba(detailColour, 0.6);
       return types.map((type, i) => {
           return (
               <span 
@@ -45,23 +45,21 @@ class CardContainer extends React.Component {
       });
   }
 
-  hex2rgba = (hex, alpha = 1) => {
+  const hex2rgba = (hex, alpha = 1) => {
     const [r, g, b] = hex.match(/\w\w/g).map(x => parseInt(x, 16));
     return `rgba(${r},${g},${b},${alpha})`;
   };
 
 
-  render = () => {
-    return (
-        <Card
-          pokemonList={this.props.pokemonList}
-          getDetailColour={this.getDetailColour}
-          handleClick={this.handleClick}
-          activeCard={this.props.activePokemon}
-          renderTypeList={this.renderTypeList}
-        />
-    );
-  };
+  return (
+      <Card
+        pokemonList={props.pokemonList}
+        getDetailColour={getDetailColour}
+        handleClick={handleClick}
+        activeCard={props.activePokemon}
+        renderTypeList={renderTypeList}
+      />
+  );
 }
 
 export default CardContainer;

@@ -5,19 +5,17 @@ import Col from 'react-bootstrap/Col';
 import '../PokemonInfo/PokemonInfo.scss';
 
 export const PokemonInfo = props => {
-	// return props.pokemonInfo.map((pokemon, i) => {
-		return (
-			<Col xs="12" 
-				style={{order: props.position}}
-				className={`PokemonInfo ${props.activePokemon !== null ? 'active' : '' }`}
-			>
-				<h4>I *will* be expanding!</h4>
-				<p>{props.pokemonInfo.name}</p>
-				
+	return (
+		<Col xs="12" 
+			style={{order: props.position}}
+			className={`PokemonInfo ${props.pokemonInfo !== null ? 'active' : '' }`}
+		>
+			<h4>I *will* be expanding!</h4>
+			<p>{props.pokemonInfo.name}</p>
+			
 
-			</Col>
-	  	);
-  	// });
+		</Col>
+  	);
 }
 
 export default PokemonInfo;
