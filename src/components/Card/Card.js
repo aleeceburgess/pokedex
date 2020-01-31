@@ -1,5 +1,4 @@
 import React from 'react';
-import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import Waves from '../Waves/Waves';
@@ -17,7 +16,7 @@ export const Card = props => {
 				style={{order: i}}
 			>
 				<div 
-					className={`pokemonCard ${props.activeCard == pokemon.id ? 'active' : '' }`}
+					className={`pokemonCard ${props.activeCard === pokemon.id ? 'active' : '' }`}
 					data-id={pokemon.id}
 					onClick={props.handleClick.bind(this)}
 				>
@@ -26,7 +25,7 @@ export const Card = props => {
 						<div className="image_container">
 							<img
 								src={pokemon.image} 
-								alt={`Image of ${pokemon.name}`}
+								alt={`${pokemon.name}`}
 							/>
 						</div>
 					</div>
