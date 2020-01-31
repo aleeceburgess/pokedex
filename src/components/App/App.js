@@ -53,10 +53,13 @@ const App = () => {
           activePokemon={activePokemon}
           handleCardClick={handleCardClick}
         />
-        <PokemonInfoContainer 
-          pokemonList={pokemonList} 
-          activePokemon={activePokemon}
-        />
+        {activePokemon && (
+          <PokemonInfoContainer 
+            pokemonList={pokemonList} 
+            activePokemon={activePokemon}
+          />
+        )}
+
       </Row>
     </Container>
   );

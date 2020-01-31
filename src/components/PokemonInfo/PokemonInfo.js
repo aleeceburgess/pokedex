@@ -12,6 +12,7 @@ export const PokemonInfo = props => {
 		>
 			<h4>I *will* be expanding!</h4>
 			<p>{props.pokemonInfo.name}</p>
+			<p>{props.position}</p>
 			
 
 		</Col>
